@@ -14,6 +14,10 @@ let application_api = {
   renderPortfolio: function(req, res) {
     let portfolio = { title: 'Rombu\'s Portfolio'}
     res.render('portfolio', portfolio);
+  },
+  renderTerms: function(req, res) {
+    let terms = { title: 'Terms and Conditions of Rombu' }
+    res.render('terms', terms)
   }
 }
 

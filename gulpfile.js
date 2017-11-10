@@ -5,10 +5,9 @@
 var gulp      = require('gulp'),
   uglify      = require('gulp-uglify'),
   rename      = require('gulp-rename'),
-  browserSync = require('browser-sync'),
   sass        = require('gulp-sass'),
-  livereload  = require('gulp-livereload'),
-  sourcemaps  = require('gulp-sourcemaps');
+  cleanCSS    = require('gulp-clean-css'),
+  livereload  = require('gulp-livereload')
 
 /**************************************/
 //*****// File Paths
@@ -17,7 +16,8 @@ var path = {
   js: './public/js/*.js',
   jsOutput: './public/js',
   sass: './public/scss/*.scss',
-  sassOutput: './public/css'
+  sassOutput: './public/css',
+  views: '*.handlebars'
 }
 
 /**************************************/
@@ -25,7 +25,7 @@ var path = {
 /**************************************/
 
 gulp.task('scripts', function() {
-  gulp.src([path.js, '!./public/js/*.min.js'])
+  return gulp.src([path.js, '!./public/js/*.min.js'])
     .pipe(rename({suffix:'.min'}))
     .pipe(uglify())
     .pipe(gulp.dest(path.jsOutput))
@@ -38,9 +38,12 @@ gulp.task('scripts', function() {
 
 gulp.task('sass', function () {
  return gulp.src(path.sass)
-  .pipe(sourcemaps.init())
   .pipe(sass().on('error', sass.logError))
   .pipe(rename("rombu.css"))
+  .pipe(cleanCSS({debug: true}, function(details) {
+      console.log(details.name + ': ' + details.stats.originalSize);
+      console.log(details.name + ': ' + details.stats.minifiedSize);
+    }))
   .pipe(gulp.dest(path.sassOutput))
   .pipe(livereload());
 });
@@ -51,11 +54,15 @@ gulp.task('sass', function () {
 
 gulp.task('watch', function(){
   livereload.listen();
-  gulp.watch([path.js, path.sass], ['scripts', 'sass']);
+  gulp.watch(path.js, ['scripts']);
+  gulp.watch(path.sass, ['sass']);
 });
 
 /**************************************/
 //*****// Default Task
 /**************************************/
 
-gulp.task('default', ['scripts', 'sass', 'watch']);
+gulp.task('default', ['scripts', 'sass', 'watch'], function() {
+  gulp.watch(path.js, ['scripts']);
+  gulp.watch(path.sass, ['sass']);
+});

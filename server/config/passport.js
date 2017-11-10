@@ -42,4 +42,4 @@ passport.deserializeUser(function(id, done) {
 });
 
 // Exporting our configured passport
-export default passport;
+module.exports = passport;
