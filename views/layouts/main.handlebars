@@ -15,26 +15,13 @@
 </head>
 
 <body>
-  <div class="menu-cont" id="toggle">
-    <span class='menu-txt' data-text='CLOSE-'>
-      -MENU
-    </span>
-  </div>
-  <div class="overlay" id="overlay">
-    <nav class="overlay-menu">
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/portfolio">Portfolio</a></li>
-        <li><a href="/contact">Contact</a></li>
-      </ul>
-    </nav>
-  </div>
+  {{> nav }}
   <div class="m-scene" id="main">
   {{{body}}}
   </div>
-  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/smoothState.js/0.7.2/jquery.smoothState.min.js" charset="utf-8"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/velocity/1.2.2/velocity.min.js" charset="utf-8"></script>
+  <script src="/js/classie.js" charset="utf-8"></script>
+  <script src="/js/modernizr.custom.js" charset="utf-8"></script>
   <script src="/js/main.min.js" charset="utf-8"></script>
 </body>
 

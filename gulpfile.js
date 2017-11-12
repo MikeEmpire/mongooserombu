@@ -13,7 +13,7 @@ var gulp      = require('gulp'),
 //*****// File Paths
 /**************************************/
 var path = {
-  js: './public/js/*.js',
+  js: './public/js/main.js',
   jsOutput: './public/js',
   sass: './public/scss/*.scss',
   sassOutput: './public/css',
@@ -25,7 +25,7 @@ var path = {
 /**************************************/
 
 gulp.task('scripts', function() {
-  return gulp.src([path.js, '!./public/js/*.min.js'])
+  return gulp.src(path.js)
     .pipe(rename({suffix:'.min'}))
     .pipe(uglify())
     .pipe(gulp.dest(path.jsOutput))

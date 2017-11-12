@@ -5,19 +5,19 @@ let application_api = {
   },
   renderAbout: function(req, res) {
     let about = { title: 'About Rombu' }
-    res.render('about', about);
+    res.render('index/about', about);
   },
   renderContact: function(req, res) {
     let contact = { title: 'Contact Rombu' }
-    res.render('contact', contact);
+    res.render('index/contact', contact);
   },
   renderPortfolio: function(req, res) {
     let portfolio = { title: 'Rombu\'s Portfolio'}
-    res.render('portfolio', portfolio);
+    res.render('index/portfolio', portfolio);
   },
   renderTerms: function(req, res) {
     let terms = { title: 'Terms and Conditions of Rombu' }
-    res.render('terms', terms)
+    res.render('index/terms', terms)
   }
 }
 

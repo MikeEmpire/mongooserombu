@@ -12,7 +12,8 @@ import path         from 'path';
 import session      from 'express-session';
 import database     from './config/database';
 import mongoose     from 'mongoose';
-import handlebars   from 'express-handlebars'
+import handlebars   from 'express-handlebars';
+import cors         from 'cors';
 
 const logger        = require('morgan');
 
@@ -37,6 +38,7 @@ app.use(compression());
 //*****// Middleware
 /**************************************/
 
+app.use(cors());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

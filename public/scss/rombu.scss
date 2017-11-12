@@ -2,7 +2,7 @@
 
 //*****  TABLE OF CONTENTS ***********//
 
-//*****  1. Fonts & Variables
+//*****  1. Google Fonts & Variables
 //*****  2. General Elements
 //*****  3. Animations
 //*****  4. Navigation CSS
@@ -10,13 +10,18 @@
 /**************************************/
 
 /**************************************/
-//*****  1. Fonts & Variables
+//*****  1. Google Fonts & Variables
 /**************************************/
 
 @import url('https://fonts.googleapis.com/css?family=Rubik:300,400,700,900');
 $font-stack: Rubik, sans-serif;
 $gradient: #FA2300, #E1037C;
 $center-margin: 0 auto;
+$color-1: #f2eee2;
+$color-2: #000000;
+$color-3: #43c0f6;
+$color-4: #f81b84;
+$color-5: #f5ce28;
 
 /**************************************/
 //*****  2. General Elements
@@ -34,22 +39,11 @@ body {
   top: 0;
   left: 0;
   overflow-y: hidden;
+  font-family: $font-stack;
   margin: $center-margin;
   background-size: cover;
   background-position: center;
   text-align: center;
-}
-
-p {
-  margin: 0;
-  padding: 0;
-  height: 170px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  background-image: -webkit-linear-gradient($gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 /**************************************/
@@ -120,187 +114,163 @@ p {
 /**************************************/
 //*****  4. Navigation CSS
 /**************************************/
-
-.transparent {
-  background: rgba(11, 31, 65, 0.5);
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  margin: 0;
-}
-
-.menu-cont {
-  position: fixed;
-  float: left;
-  top: 4%;
-  display: block;
-  cursor: pointer;
-  padding: 4px;
-  cursor: pointer;
-  z-index: 200;
-}
-
-.menu-txt {
-  display: inline-block;
-  position: relative;
-  text-transform: uppercase;
-  font-size: 20px;
-  letter-spacing: 6px;
-  font-weight: 700;
+nav {
   font-family: $font-stack;
-  text-overflow: ellipsis;
-  background-image: -webkit-linear-gradient($gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  cursor: pointer;
+  img {
+    float: left;
+    max-width: 16%;
+    margin: 1%;
+    width: 10%;
+  }
+  p {
+    color: $color-1;
+    cursor: pointer;
+    float: right;
+    font-size: x-large;
+    margin: 2.5%;
+    margin-right: 7%;
+  }
 }
+/* Overlay style */
 
 .overlay {
   position: fixed;
-  background: rgba(0, 0, 0, 0.9);
+  width: 100%;
+  height: 100%;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 0%;
-  opacity: 0;
-  visibility: hidden;
-  -webkit-transition: opacity .35s, visibility .35s, height .35s;
-  transition: opacity .35s, visibility .35s, height .35s;
-  overflow: hidden;
-  z-index: 100;
-  &.open {
-    opacity: .9;
-    visibility: visible;
-    height: 100%;
-    li {
-      -webkit-animation: fadeInRight .5s ease forwards;
-      animation: fadeInRight .5s ease forwards;
-      -webkit-animation-delay: .35s;
-      animation-delay: .35s;
-      &:nth-of-type(2) {
-        -webkit-animation-delay: .4s;
-        animation-delay: .4s;
-      }
-      &:nth-of-type(3) {
-        -webkit-animation-delay: .45s;
-        animation-delay: .45s;
-      }
-      &:nth-of-type(4) {
-        -webkit-animation-delay: .50s;
-        animation-delay: .50s;
-      }
-    }
+  background: $color-3;
+  .overlay-close {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    overflow: hidden;
+    border: none;
+    background: url(../images/cross.png) no-repeat center center;
+    text-indent: 200%;
+    color: transparent;
+    outline: none;
+    z-index: 100;
   }
   nav {
+    text-align: center;
     position: relative;
-    height: 70%;
     top: 50%;
+    height: 60%;
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
-    font-size: 50px;
-    font-family: $font-stack;
-    font-weight: 400;
-    text-align: center;
   }
   ul {
     list-style: none;
     padding: 0;
     margin: 0 auto;
     display: inline-block;
-    position: relative;
     height: 100%;
+    position: relative;
     li {
       display: block;
-      height: 25%;
-      height: calc(100% / 4);
-      min-height: 50px;
-      position: relative;
-      opacity: 0;
+      height: 20%;
+      height: calc(100% / 5);
+      min-height: 54px;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
       a {
+        font-size: 54px;
+        font-weight: 300;
         display: block;
-        position: relative;
-        text-overflow: ellipsis;
-        background-image: -webkit-linear-gradient($gradient);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        text-decoration: none;
-        overflow: hidden;
-        -webkit-transition: all 0.5s ease;
-        transition: all 0.5s ease;
-        &:hover:after, &:focus:after, &:active:after {
-          width: 100%;
-        }
-        &:after {
-          content: '';
-          position: absolute;
-          bottom: 0;
-          left: 50%;
-          width: 0%;
-          -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-          height: 3px;
-          -webkit-transition: .35s;
-          transition: .35s;
-        }
-        &:hover {
-          -webkit-transform: scale(1.6);
-          transform: scale(1.6);
-          &:before {
-            -webkit-transform: scaleX(1);
-            transform: scaleX(1);
-          }
-        }
-        &:after {
-          content: '';
-          position: absolute;
-          bottom: 0;
-          left: 50%;
-          width: 0%;
-          -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-          height: 3px;
-          -webkit-transition: .35s;
-          transition: .35s;
-        }
-        &:before {
-          -webkit-transform: scaleX(0);
-          transform: scaleX(0);
-          -webkit-transition: all 0.3s ease-in-out 0s;
-          transition: all 0.3s ease-in-out 0s;
+        color: #fff;
+        -webkit-transition: color 0.2s;
+        transition: color 0.2s;
+        &:hover, &:focus {
+          color: #f0f0f0;
         }
       }
     }
   }
 }
 
-.rotate {
-  font-family: $font-stack;
-  font-size: 8.5em;
-  height: 180px;
-  overflow: hidden;
-  position: relative;
-  z-index: 30;
+/* Overlay closing cross */
+
+/* Menu style */
+
+/* Effects */
+
+.overlay-door {
+  visibility: hidden;
+  width: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -webkit-transition: width 0.5s 0.3s, visibility 0s 0.8s;
+  transition: width 0.5s 0.3s, visibility 0s 0.8s;
+  &.open {
+    visibility: visible;
+    z-index: 1000;
+    width: 100%;
+    -webkit-transition: width 0.5s;
+    transition: width 0.5s;
+  }
+  nav {
+    position: absolute;
+    background-color: $color-3;
+    left: 50%;
+    -webkit-transform: translateY(-50%) translateX(-50%);
+    transform: translateY(-50%) translateX(-50%);
+    opacity: 0;
+    -webkit-transition: opacity 0.3s 0.5s;
+    transition: opacity 0.3s 0.5s;
+  }
+  .overlay-close {
+    opacity: 0;
+    -webkit-transition: opacity 0.3s 0.5s;
+    transition: opacity 0.3s 0.5s;
+  }
+  &.open {
+    nav, .overlay-close {
+      opacity: 1;
+      -webkit-transition-delay: 0.5s;
+      transition-delay: 0.5s;
+    }
+  }
+  &.close {
+    nav, .overlay-close {
+      -webkit-transition-delay: 0s;
+      transition-delay: 0s;
+    }
+  }
 }
 
-.inner {
-  height: 170px;
-  -webkit-transition: -webkit-transform 0.3s ease;
-  -webkit-backface-visibility: hidden;
+@media screen and (max-height: 30.5em) {
+  .overlay {
+    nav {
+      height: 70%;
+      font-size: 34px;
+    }
+    ul li {
+      min-height: 34px;
+    }
+  }
 }
 
 /**************************************/
 //*****  5. Page Navigation CSS
 /**************************************/
+nav {
+  position: fixed;
+  height: 10vh;
+  width: 100%;
+  background: black;
+}
 
 .m-scene {
+  margin-top: 10vh;
   /** Basic styles for an animated element */
   .scene_element {
     animation-duration: 0.65s;
     transition-timing-function: ease-in;
     animation-fill-mode: both;
-
   }
 
   /** An element that fades in */

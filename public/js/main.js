@@ -1,61 +1,40 @@
-/*global $ jQuery*/
-$(document).ready(function() {
-  (function($) {
-    'use strict';
-    var $body = $('html, body'), // Define jQuery collection
-      content = $('#main').smoothState({
-        onStart: {
-          duration: 250,
-          render: function() {
-            content.toggleAnimationClass('is-exiting');
+(function() {
+	var triggerBttn = document.getElementById( 'trigger-overlay' ),
+		overlay = document.querySelector( 'div.overlay' ),
+		closeBttn = overlay.querySelector( 'button.overlay-close' ),
+		transEndEventNames = {
+			'WebkitTransition': 'webkitTransitionEnd',
+			'MozTransition': 'transitionend',
+			'OTransition': 'oTransitionEnd',
+			'msTransition': 'MSTransitionEnd',
+			'transition': 'transitionend'
+		},
+		transEndEventName = transEndEventNames[ Modernizr.prefixed( 'transition' ) ],
+		support = { transitions : Modernizr.csstransitions };
 
-            // Scroll user to the top
-            $body.animate({'scrollTop': 0});
+	function toggleOverlay() {
+		if( classie.has( overlay, 'open' ) ) {
+			classie.remove( overlay, 'open' );
+			classie.add( overlay, 'close' );
+			var onEndTransitionFn = function( ev ) {
+				if( support.transitions ) {
+					if( ev.propertyName !== 'visibility' ) return;
+					this.removeEventListener( transEndEventName, onEndTransitionFn );
+				}
+				classie.remove( overlay, 'close' );
+			};
+			if( support.transitions ) {
+				overlay.addEventListener( transEndEventName, onEndTransitionFn );
+			}
+			else {
+				onEndTransitionFn();
+			}
+		}
+		else if( !classie.has( overlay, 'close' ) ) {
+			classie.add( overlay, 'open' );
+		}
+	}
 
-          }
-        }
-      }).data('smoothState');
-  })(jQuery);
-  $('#toggle').click(function() {
-    $(this).toggleClass('active');
-    $('#overlay').toggleClass('open');
-  });
-  $('.menu-cont').on('click', function() {
-
-    var menu = $('.menu-txt').text();
-    var close = $('.menu-txt').attr('data-text');
-
-    $('.menu').toggleClass('active');
-
-    if ($('.menu-txt').text(menu)) {
-      $('.menu-txt').text(close);
-    } else {
-      $('.menu-txt').text(menu);
-    }
-    $('.menu-txt').attr('data-text', menu);
-  })
-  var findNCenter = function() {
-    var elems = document.querySelectorAll('.center-vertical');
-
-    for (var i = 0; i < elems.length; i++) {
-      elems[i].style.marginTop = (elems[i].parentNode.offsetHeight - elems[i].offsetHeight) / 2 + 'px';
-    }
-  };
-
-  document.addEventListener && document.addEventListener('DOMContentLoaded', findNCenter);
-  window.addEventListener && window.addEventListener('resize', findNCenter);
-
-  $(document).ready(function() {
-
-    var count = $('#inner p').length;
-    var i = 1;
-
-    setInterval(function() {
-      if (i < count) {
-        $('#inner').css('-webkit-transform', 'translate3d(0,-' + i + '00%,0)');
-        i++;
-      }
-    }, 800);
-  });
-
-})
+	triggerBttn.addEventListener( 'click', toggleOverlay );
+	closeBttn.addEventListener( 'click', toggleOverlay );
+})();
