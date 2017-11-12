@@ -3,6 +3,10 @@ logs
 *.log
 npm-debug.log*
 
+# Minified JS & CSS
+/public/js/main.min.js
+/public/css/rombu.css
+
 # Runtime data
 pids
 *.pid
