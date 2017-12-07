@@ -10,7 +10,7 @@
     "start": "npm-run-all --parallel security-check run-gulp open",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Michael Olie & Derek Olsen",
+  "author": "Michael Olie & Derek Olson",
   "license": "ISC",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
