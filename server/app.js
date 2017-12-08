@@ -34,6 +34,7 @@ app.set('view engine', 'handlebars');
 app.set('views', path.join( __dirname, '..', 'views'));
 app.use(compression());
 
+
 /**************************************/
 //*****// Middleware
 /**************************************/
@@ -44,6 +45,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '..', 'public')));
+app.use(express.static('public'));
 app.use(session({ secret: config.sessionKey, resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
