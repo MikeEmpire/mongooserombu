@@ -15,7 +15,7 @@ var gulp      = require('gulp'),
 var path = {
   js: './public/js/main.js',
   jsOutput: './public/js',
-  sass: './public/scss/*.scss',
+  sass: './public/scss/rombu.scss',
   sassOutput: './public/css',
   views: '*.handlebars'
 }
