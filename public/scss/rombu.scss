@@ -8,7 +8,7 @@
   box-sizing: inherit; }
 
 html {
-  //defines what is 1 rem as 10px
+  //defines what is 1 rem as 10px 
   font-size: 62.5%; }
 
 /**************************************/
@@ -26,6 +26,19 @@ html {
 /**************************************/
 //*****  1. Google Fonts & Variables
 /**************************************/
+
+//variables****************************
+
+$gradient: #FA2300, #E1037C;
+$center-margin: 0 auto;
+$color-1: #f2eee2;
+$color-2: #000000;
+$color-3: #43c0f6;
+$color-4: #f81b84;
+$color-5: #f5ce28;
+$color-black: #000;
+$color-gray-light-1: #f7f7f7;
+$color-gray-light-2: #eee;
 
 //google fonts
 @import url('https://fonts.googleapis.com/css?family=Rubik:300,400,700,900');
@@ -50,18 +63,6 @@ body {
   background-position: center;
   text-align: center;
 }
-
-//variables****************************
-
-$gradient: #FA2300, #E1037C;
-$center-margin: 0 auto};
-$color-1: #f2eee2;
-$color-2: #000000;
-$color-3: #43c0f6;
-$color-4: #f81b84;
-$color-5: #f5ce28;
-
-
 
 //Mixins********************************
 @mixin clearfix {
@@ -150,7 +151,7 @@ $color-5: #f5ce28;
 /**************************************/
 //*****  4. Navigation CSS
 /**************************************/
-@import "components/nav";
+
 
 nav {
   font-family: $font-stack;
@@ -328,7 +329,17 @@ nav {
 }
 
 
+
 //*************************************
 //*******About Page *******************
 //*************************************
+.section-about--container {
+	background-color: $color-gray-light-1;
+	padding: 25rem 0;
+	margin-top: -10vh;
+}
 
+.horse-image {
+	float: right;
+	width: 55%;
+}
