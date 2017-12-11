@@ -35,10 +35,19 @@ $color-1: #f2eee2;
 $color-2: #000000;
 $color-3: #43c0f6;
 $color-4: #f81b84;
-$color-5: #f5ce28;
+$color-yellow-md-1: #f5ce28;
+$color-white: #fff;
+$color-gray-dark: #777;
+$color-gray-dark-2: #999;
 $color-black: #000;
 $color-gray-light-1: #f7f7f7;
 $color-gray-light-2: #eee;
+
+//grid variables****************************
+
+$grid-width: 114rem;
+$gutter-vertical: 8rem;
+$gutter-horizontal: 6rem;
 
 //google fonts
 @import url('https://fonts.googleapis.com/css?family=Rubik:300,400,700,900');
@@ -333,13 +342,54 @@ nav {
 //*************************************
 //*******About Page *******************
 //*************************************
-.section-about--container {
+
+
+
+.about-row-1 {
 	background-color: $color-gray-light-1;
-	padding: 25rem 0;
-	margin-top: -10vh;
+	padding: 2rem 2rem;
+	margin-top: 1rem;
+	margin-bottom: 2rem;
+	transform: skewX(-12deg);
 }
 
+.about-row-2 {
+	background-color: $color-gray-dark-2;
+	padding: 2rem 5rem;
+	margin-top: -7vh;
+	margin-bottom: 5vh;
+}
+
+.about-text--top {
+	float: left;
+	padding: 2rem;
+	margin-top: -60%;
+	font-size: 4rem;
+	font-weight: 700;
+	color: $color-yellow-md-1;
+	text-shadow: 0 .2rem .5rem rgba($color-black, .6);
+	border-radius: 2px;
+	position: relative;
+}
+
+.about-text--bottom {
+	float: left;
+	padding: 1rem;
+	margin-top: 5%;
+	font-size: 4vh;
+	font-weight: 700;
+	color: $color-yellow-md-1;
+	text-shadow: 0 .2rem .5rem rgba($color-black, .6);
+	border-radius: 2px;
+	position: relative;
+}
+
+
 .horse-image {
+	margin-top: 5vh;
 	float: right;
-	width: 55%;
+	width: 60%;
+	transform: skewY(12deg);
+}
+
 }
