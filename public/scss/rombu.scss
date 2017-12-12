@@ -58,14 +58,14 @@ html {
   height: 100%;
   top: 0;
   left: 0;
-  overflow-y: hidden;
+  overflow-y: auto;
 }
 
 body {
   height: 100%;
   top: 0;
   left: 0;
-  overflow-y: hidden;
+  overflow-y: auto;
   font-family: $font-stack;
   margin: $center-margin;
   background-size: cover;
@@ -164,6 +164,7 @@ body {
 
 nav {
   font-family: $font-stack;
+  z-index: 5;
   img {
     float: left;
     max-width: 16%;
@@ -342,54 +343,106 @@ nav {
 //*************************************
 //*******About Page *******************
 //*************************************
+.section-about {
 
+  overflow-y:visible !important;
+  height: 100%;
+  width: 100%;
+
+}
 
 
 .about-row-1 {
-	background-color: $color-gray-light-1;
+  @include clearfix;
+	background-color: $color-gray-light-2;
 	padding: 2rem 2rem;
 	margin-top: 1rem;
-	margin-bottom: 2rem;
-	transform: skewX(-12deg);
+	margin-bottom: -1rem;
+  height: 70%;
 }
 
-.about-row-2 {
-	background-color: $color-gray-dark-2;
-	padding: 2rem 5rem;
-	margin-top: -7vh;
-	margin-bottom: 5vh;
+.horse-image {
+  @include clearfix;
+  position: absolute;
+  left: 40vw;
+  margin-top: 5vh;
+  width: 50vw;
 }
 
 .about-text--top {
-	float: left;
-	padding: 2rem;
-	margin-top: -60%;
-	font-size: 4rem;
+  @include clearfix;
+  position: absolute;
+	font-size: 3vw;
 	font-weight: 700;
 	color: $color-yellow-md-1;
 	text-shadow: 0 .2rem .5rem rgba($color-black, .6);
 	border-radius: 2px;
-	position: relative;
+	position: absolute;
+	
 }
 
+.about-row-2 {
+  @include clearfix;
+  background-color: $color-gray-dark-2;
+  padding: 2rem 5rem;
+
+}
 .about-text--bottom {
-	float: left;
-	padding: 1rem;
+  @include clearfix;
+	padding: 0;
 	margin-top: 5%;
-	font-size: 4vh;
+	font-size: 3vw;
 	font-weight: 700;
 	color: $color-yellow-md-1;
 	text-shadow: 0 .2rem .5rem rgba($color-black, .6);
 	border-radius: 2px;
-	position: relative;
+
+}
+
+.about-feature {
+  @include clearfix;
+  position:relative;
+  height:auto;
+  background-image: linear-gradient(to right bottom, $color-gray-dark, black);
+
+    &--shape {
+      height: 15rem;
+      width: 15rem;
+      
+      left: 40%;
+      padding: 2rem;
+
+      -webkit-shape-outside: circle(50% at 50% 50%);
+      shape-outside: circle(50% at 50% 50%);
+      clip-path: circle(50% at 50% 50%);
+      -webkit-clip-path: circle(50% at 50% 50%);
+      transform: translateX(-3rem) skewX(12deg);
+      position: relative;
+    }
+
+    &--image {
+      height: 100%;
+      // transform: translateX(-4rem) scale(1.1);
+      backface-visibility: hidden;
+      transition: .5s;
+    }
+
+    &--caption {
+      // transform: translate(-50%, 20%);
+      color: $color-white;
+      font-size: 2vw;
+      text-align: center;
+      opacity: 1;
+      padding-bottom: 1rem;
+      // transition: all .5s;
+      // backface-visibility: hidden;
+  }
+
+    &--button {
+      position:relative;
+      left: 45%; 
+    }
 }
 
 
-.horse-image {
-	margin-top: 5vh;
-	float: right;
-	width: 60%;
-	transform: skewY(12deg);
-}
 
-}
