@@ -17,7 +17,7 @@ var path = {
   jsOutput: './public/js',
   sass: './public/scss/rombu.scss',
   sassOutput: './public/css',
-  views: '*.handlebars'
+  views: './views/*.handlebars'
 }
 
 /**************************************/
@@ -54,6 +54,7 @@ gulp.task('sass', function () {
 
 gulp.task('watch', function(){
   livereload.listen();
+  gulp.watch(path.views);
   gulp.watch(path.js, ['scripts']);
   gulp.watch(path.sass, ['sass']);
 });
