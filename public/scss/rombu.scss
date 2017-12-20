@@ -188,7 +188,14 @@ nav {
   height: 100%;
   top: 0;
   left: 0;
-  background-image: radial-gradient($color-gray-light-1,black);
+  // background-image: radial-gradient($color-gray-dark-2,black),
+  background-image: url(../images/rombuheaderimg.png),
+  radial-gradient($color-gray-dark-2,black);
+  background-repeat: no-repeat, no-repeat;
+  background-position: top 5rem center, center;
+
+
+
   .overlay-close {
     width: 8rem;
     height: 8rem;
@@ -462,13 +469,16 @@ nav {
         border-bottom: 4px solid transparent;
       }
 
-      &:active {
+      &:active{
         @include clearfix;
         display: block;
-        outline:none;
-        border:none;
         transform: translateY(-0.1rem);
         box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+      }
+
+      &::after {
+        border:none;
+        outline:none;
       }
     }
   }
