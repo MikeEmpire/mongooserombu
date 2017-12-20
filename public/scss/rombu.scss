@@ -58,14 +58,14 @@ html {
   height: 100%;
   top: 0;
   left: 0;
-  overflow-y: hidden;
+  overflow-y: auto;
 }
 
 body {
   height: 100%;
   top: 0;
   left: 0;
-  overflow-y: hidden;
+  overflow-y: auto;
   font-family: $font-stack;
   margin: $center-margin;
   background-size: cover;
@@ -164,6 +164,7 @@ body {
 
 nav {
   font-family: $font-stack;
+  z-index: 5;
   img {
     float: left;
     max-width: 16%;
@@ -187,7 +188,7 @@ nav {
   height: 100%;
   top: 0;
   left: 0;
-  background: $color-3;
+  background-image: radial-gradient($color-gray-light-1,black);
   .overlay-close {
     width: 8rem;
     height: 8rem;
@@ -209,6 +210,7 @@ nav {
     height: 60%;
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
+
   }
   ul {
     list-style: none;
@@ -222,18 +224,32 @@ nav {
       height: 20%;
       height: calc(100% / 5);
       min-height: 5.4rem;
+      padding: 0 2rem 0 2rem;
       -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
       a {
         font-size: 5.4rem;
-        font-weight: 300;
+        font-weight: 320;
+        padding: 2rem 2rem 2rem;
+        text-decoration: none;
+        text-transform: uppercase;
         display: block;
+        text-shadow: 0 .2rem .5rem rgba($color-black, .6);
         color: #fff;
-        -webkit-transition: color 0.2s;
-        transition: color 0.2s;
-        &:hover, &:focus {
-          color: #f0f0f0;
+        background-image: linear-gradient(120deg, transparent 0%, transparent 50%, (rgba($color-gray-light-2, 1)) 50%);
+        background-size: 230%;
+        -webkit-transition: all 0.5s;
+        transition: all 0.5s;
+        &:hover, &:focus, &:active {
+          background-position: 100%;
+          background-color: rgba($color-yellow-md-1, .05);
+          color: $color-yellow-md-1;
+          transform: translateX(.2rem);
+          box-shadow: 0 1.5rem 2rem rgba($color-black, .15);
         }
+
+        // &:link,
+        // &
       }
     }
   }
@@ -262,7 +278,7 @@ nav {
   }
   nav {
     position: absolute;
-    background-color: $color-3;
+    background-color: transparent;
     left: 50%;
     -webkit-transform: translateY(-50%) translateX(-50%);
     transform: translateY(-50%) translateX(-50%);
@@ -342,52 +358,117 @@ nav {
 //*************************************
 //*******About Page *******************
 //*************************************
-
-
-
-.about-row-1 {
-	background-color: $color-gray-light-1;
-	padding: 2rem 2rem;
-	margin-top: 1rem;
-	margin-bottom: 2rem;
-	transform: skewX(-12deg);
+.section-about {
+  height: 100%;
+  width: 100%;
 }
 
-.about-row-2 {
-	background-color: $color-gray-dark-2;
-	padding: 2rem 5rem;
-	margin-top: -7vh;
-	margin-bottom: 5vh;
+.about-row-1 {
+  @include clearfix;
+	background-color: $color-gray-light-2;
+	padding: 2rem 2rem;
+	margin-bottom: -1rem;
+  height: 70%;
+}
+
+.horse-image {
+  position: absolute;
+  left: 40vw;
+  margin-top: 5vh;
+  width: 50vw;
 }
 
 .about-text--top {
-	float: left;
-	padding: 2rem;
-	margin-top: -60%;
-	font-size: 4rem;
+  @include clearfix;
+  position: absolute;
+	font-size: 3vw;
 	font-weight: 700;
 	color: $color-yellow-md-1;
-	text-shadow: 0 .2rem .5rem rgba($color-black, .6);
+	text-shadow: 0 .2rem .5rem rgba($color-black, .7);
 	border-radius: 2px;
-	position: relative;
 }
 
+.about-row-2 {
+  background-color: $color-gray-dark-2;
+  padding: 3rem 4rem;
+
+}
 .about-text--bottom {
-	float: left;
-	padding: 1rem;
-	margin-top: 5%;
-	font-size: 4vh;
+	font-size: 3vw;
 	font-weight: 700;
 	color: $color-yellow-md-1;
 	text-shadow: 0 .2rem .5rem rgba($color-black, .6);
-	border-radius: 2px;
-	position: relative;
 }
 
+.about-feature {
+  @include clearfix;
+  position:relative;
+  height:auto;
+  background-image: linear-gradient(to right bottom, $color-gray-dark, black);
 
-.horse-image {
-	margin-top: 5vh;
-	float: right;
-	width: 60%;
-	transform: skewY(12deg);
-}
+    &--shape {
+      height: 15rem;
+      width: 15rem;
+      left: 40%;
+      padding: 2rem;
+
+      -webkit-shape-outside: circle(50% at 50% 50%);
+      shape-outside: circle(50% at 50% 50%);
+      clip-path: circle(50% at 50% 50%);
+      -webkit-clip-path: circle(50% at 50% 50%);
+      transform: translateX(-3rem) skewX(12deg);
+      position: relative;
+    }
+  
+    &--image {
+      height: 100%;
+      // transform: translateX(-4rem) scale(1.1);
+      backface-visibility: hidden;
+      transition: .5s;
+    }
+
+    &--caption {
+      // transform: translate(-50%, 20%);
+      color: $color-white;
+      font-size: 2vw;
+      text-align: center;
+      opacity: 1;
+      padding-bottom: 5rem;
+      // transition: all .5s;
+      // backface-visibility: hidden;
+    }
+
+    &--button {
+        outline: none;
+        background-color: transparent;
+        color: white;
+        border: none;
+        font-size: 1.6rem;
+        font-weight: 600;
+        position:relative;
+        top: -4rem;
+        left: 45%;
+        padding: .5rem;
+        border-radius: 2px;
+        cursor: pointer;
+
+
+      &:hover {
+        outline:none;
+        background-color: $color-gray-dark-2;
+        color: white;
+        box-shadow: 0 1rem 2rem rgba($color-black, .85);
+        transform: translateY(-2px);
+        border-bottom: 4px solid transparent;
+      }
+
+      &:active {
+        @include clearfix;
+        display: block;
+        outline:none;
+        border:none;
+        transform: translateY(-0.1rem);
+        box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+      }
+    }
+  }
