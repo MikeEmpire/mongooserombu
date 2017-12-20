@@ -39,6 +39,7 @@ $color-gray-dark-2: #999;
 $color-black: #000;
 $color-gray-light-1: #f7f7f7;
 $color-gray-light-2: #eee;
+$font-stack: Rubik, sans-serif;
 
 //grid variables****************************
 
@@ -48,8 +49,6 @@ $gutter-horizontal: 6rem;
 
 //google fonts
 @import url('https://fonts.googleapis.com/css?family=Rubik:300,400,700,900');
-
-$font-stack: Rubik, sans-serif;
 
 html {
   font-size: 62.5%;
@@ -78,6 +77,14 @@ body {
 		display: table;
 		clear: both;
 	}
+}
+
+@mixin rombuText {
+  color: #f5ce28;
+  font-size: 3.2vh;
+  line-height: 5vh;
+  margin-top: 10%;
+  text-shadow: black -0.3vh 1.3px;
 }
 
 /**************************************/
@@ -337,9 +344,29 @@ nav {
 //*******Home Page *******************
 //*************************************
 
+.container {
+  margin: 0;
+}
+
 .full-width {
   height: 100vh;
   width: 100vw;
+  .black {
+    background-color: black;
+    img {
+      border-radius: 10vw;
+      margin-top: 2%;
+      width: 20%;
+    }
+    h4 {
+      color: $color-1;
+      font-weight: bold;
+    }
+    hr {
+      width: 40%;
+      margin: 20px auto;
+    }
+  }
   #bgvid {
     position: relative;
     top: 50%;
@@ -350,6 +377,16 @@ nav {
     height: auto;
     z-index: -100;
     transform: translateX(-50%) translateY(-50%);
+  }
+  .text-1 {
+    @include rombuText;
+  }
+  .bold {
+    font-weight: bold;
+  }
+  img {
+    margin-top: 10%;
+    width: 100%;
   }
 }
 
