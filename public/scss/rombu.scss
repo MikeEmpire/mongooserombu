@@ -188,13 +188,15 @@ nav {
   height: 100%;
   top: 0;
   left: 0;
-  // background-image: radial-gradient($color-gray-dark-2,black),
-  background-image: url(../images/rombuheaderimg.png),
-  radial-gradient($color-gray-dark-2,black);
-  background-repeat: no-repeat, no-repeat;
-  background-position: top 5rem center, center;
+  background-image: url(../images/texture-background-4.jpg), radial-gradient($color-gray-dark-2,black), url(../images/rombuheaderimg.png);
+  background-blend-mode: multiply;
+  background-size: 100%;
+  // background-repeat: no-repeat, no-repeat;
+  //background-position: top 5rem center, center;
 
 
+//url(../images/rombuheaderimg.png)
+//radial-gradient($color-gray-dark-2,black)
 
   .overlay-close {
     width: 8rem;
@@ -231,7 +233,7 @@ nav {
       height: 20%;
       height: calc(100% / 5);
       min-height: 5.4rem;
-      padding: 0 2rem 0 2rem;
+      padding: 0 0 9rem 0;
       -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
       a {
@@ -241,9 +243,9 @@ nav {
         text-decoration: none;
         text-transform: uppercase;
         display: block;
-        text-shadow: 0 .2rem .5rem rgba($color-black, .6);
+        text-shadow: 0 .2rem .5rem rgba($color-black, .65);
         color: #fff;
-        background-image: linear-gradient(120deg, transparent 0%, transparent 50%, (rgba($color-gray-light-2, 1)) 50%);
+        background-image: linear-gradient(120deg, transparent 0%, transparent 50%, (rgba($color-gray-light-2, .7)) 50%);
         background-size: 230%;
         -webkit-transition: all 0.5s;
         transition: all 0.5s;
@@ -252,7 +254,7 @@ nav {
           background-color: rgba($color-yellow-md-1, .05);
           color: $color-yellow-md-1;
           transform: translateX(.2rem);
-          box-shadow: 0 1.5rem 2rem rgba($color-black, .15);
+          box-shadow: 0 1.5rem 2rem rgba($color-black, .95);
         }
 
         // &:link,
@@ -366,16 +368,32 @@ nav {
 //*******About Page *******************
 //*************************************
 .section-about {
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
+
+}
+
+.section-container{
+  display: block;
 }
 
 .about-row-1 {
   @include clearfix;
-	background-color: $color-gray-light-2;
-	padding: 2rem 2rem;
+	//background-image:url(../images/texture-background-1.jpg);
+  background-color: rgba($color-gray-light-2, .55);
+  background-image: url(../images/texture-background-1.jpg), linear-gradient($color-gray-dark-2,black), url(../images/rombuheaderimg2.png);
+  background-blend-mode: multiply, screen;
+  background-repeat: repeat-y;
+  background-position: 50% 0;
+  -ms-background-size: cover;
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  background-size: cover;
+  padding: 2rem 2rem;
 	margin-bottom: -1rem;
-  height: 70%;
+  height: 100%;
+  z-index: 50;
 }
 
 .horse-image {
@@ -383,6 +401,8 @@ nav {
   left: 40vw;
   margin-top: 5vh;
   width: 50vw;
+
+
 }
 
 .about-text--top {
@@ -391,26 +411,35 @@ nav {
 	font-size: 3vw;
 	font-weight: 700;
 	color: $color-yellow-md-1;
-	text-shadow: 0 .2rem .5rem rgba($color-black, .7);
+	text-shadow: 0 .2rem .5rem rgba($color-black, .75);
 	border-radius: 2px;
 }
 
 .about-row-2 {
-  background-color: $color-gray-dark-2;
-  padding: 3rem 4rem;
+  //background-image: url(../images/texture-background-5.jpg);
+  //background-color: rgba($color-gray-dark-2, 1);
+  position: relative;
+  padding: 3rem 5rem;
+
+
+
 
 }
 .about-text--bottom {
+  position: relative;
+  right: 2rem;
 	font-size: 3vw;
+  column-count: 1;
 	font-weight: 700;
 	color: $color-yellow-md-1;
 	text-shadow: 0 .2rem .5rem rgba($color-black, .6);
+
 }
 
 .about-feature {
   @include clearfix;
   position:relative;
-  height:auto;
+  background-size: 100vw;
   background-image: linear-gradient(to right bottom, $color-gray-dark, black);
 
     &--shape {
@@ -426,7 +455,7 @@ nav {
       transform: translateX(-3rem) skewX(12deg);
       position: relative;
     }
-  
+
     &--image {
       height: 100%;
       // transform: translateX(-4rem) scale(1.1);
