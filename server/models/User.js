@@ -10,7 +10,8 @@ let userSchema = mongoose.Schema({
   },
   email: {
     type: String,
-    min: [3, 'Please enter an email in the correct format'],
+    unique: true,
+    min: [3, 'Your email is too short'],
     required: [true, 'Please enter an email']
   },
   password: {

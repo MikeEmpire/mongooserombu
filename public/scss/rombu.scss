@@ -7,10 +7,6 @@
   padding: 0;
   box-sizing: inherit; }
 
-html {
-  //defines what is 1 rem as 10px
-  font-size: 62.5%; }
-
 /**************************************/
 
 //*****  TABLE OF CONTENTS ***********//
@@ -20,7 +16,8 @@ html {
 //*****  3. Animations
 //*****  4. Navigation CSS
 //*****  5. Page Navigation
-//*****  6. About Page
+//*****  6. Home Page
+//*****  7. About Page
 /**************************************/
 
 /**************************************/
@@ -42,6 +39,7 @@ $color-gray-dark-2: #999;
 $color-black: #000;
 $color-gray-light-1: #f7f7f7;
 $color-gray-light-2: #eee;
+$font-stack: Rubik, sans-serif;
 
 //grid variables****************************
 
@@ -52,9 +50,8 @@ $gutter-horizontal: 6rem;
 //google fonts
 @import url('https://fonts.googleapis.com/css?family=Rubik:300,400,700,900');
 
-$font-stack: Rubik, sans-serif;
-
 html {
+  font-size: 62.5%;
   height: 100%;
   top: 0;
   left: 0;
@@ -65,7 +62,7 @@ body {
   height: 100%;
   top: 0;
   left: 0;
-  overflow-y: auto;
+  overflow-x: hidden;
   font-family: $font-stack;
   margin: $center-margin;
   background-size: cover;
@@ -82,9 +79,13 @@ body {
 	}
 }
 
-
-
-
+@mixin rombuText {
+  color: #f5ce28;
+  font-size: 3.2vh;
+  line-height: 5vh;
+  margin-top: 10%;
+  text-shadow: black -0.3vh 1.3px;
+}
 
 /**************************************/
 //*****  2. General Elements
@@ -341,7 +342,7 @@ nav {
   margin-top: 10vh;
   /** Basic styles for an animated element */
   .scene_element {
-    animation-duration: 0.65s;
+    animation-duration: 2.65s;
     transition-timing-function: ease-in;
     animation-fill-mode: both;
   }
@@ -363,6 +364,117 @@ nav {
 }
 
 
+//*************************************
+//*******Home Page *******************
+//*************************************
+
+.container {
+  margin: 0;
+}
+
+.title-text {
+  font-size: 10vh;
+}
+
+.full-width {
+  height: 100vh;
+  width: 100vw;
+  iframe {
+    width: 100%;
+  }
+  .video-container {
+    width: 100%;
+    height: 100%;
+    .video-overlay {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.7);
+    z-index: 2;
+    h1 {
+      margin-top: 33vh;
+    }
+    .full-height {
+      color: $color-1;
+      height: 100%;
+      margin-left: 10vw;
+      div.vertical-line{
+        width: 0px; /* Use only border style */
+        height: 100%;
+        float: left;
+        border: 1px inset; /* This is default border style for <hr> tag */
+      }
+      .scroll-container {
+        margin-top: 23vh;
+      }
+      .copyright-container {
+        margin-top: 50vh;
+        h3 {
+          -ms-transform: rotate(-90deg); /* IE 9 */
+          -webkit-transform: rotate(-90deg); /* Safari 3-8 */
+          transform: rotate(-90deg);
+          float: right;
+        }
+      }
+    }
+    .overlay-off & {
+      z-index: 0;
+      }
+    }
+  }
+  .video-stripe {
+    background-color: black;
+    height: 30%;
+    left: 0;
+    position:  absolute;
+    top: 43%;
+    width:  100%;
+    z-index: -1;
+  }
+  .black {
+    background-color: black;
+    img {
+      border-radius: 10vw;
+      margin-top: 2%;
+      width: 20%;
+    }
+    h4 {
+      color: $color-1;
+      font-weight: bold;
+    }
+    hr {
+      width: 40%;
+      margin: 20px auto;
+    }
+  }
+  #bgvid {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    transform: translateX(-50%) translateY(-100%);
+  }
+  .text-1 {
+    @include rombuText;
+  }
+  .bold {
+    font-weight: bold;
+  }
+  .large-text {
+    font-size: 4.5vh;
+    margin: 0;
+  }
+  img {
+    margin-top: 10%;
+    width: 100%;
+  }
+}
 
 //*************************************
 //*******About Page *******************

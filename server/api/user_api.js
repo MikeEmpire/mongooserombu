@@ -13,7 +13,7 @@ let user_api = {
     res.redirect("/");
   },
   signUpUser: function(req, res) {
-    User.findOne({ 'username' :  req.body.username }, function(err, user) {
+    User.findOne({ 'email' :  req.body.email }, function(err, user) {
       if (user) {
         res.send({
           duplicateUser: true
