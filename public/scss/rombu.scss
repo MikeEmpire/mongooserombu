@@ -333,7 +333,7 @@ nav {
   margin-top: 10vh;
   /** Basic styles for an animated element */
   .scene_element {
-    animation-duration: 0.65s;
+    animation-duration: 2.65s;
     transition-timing-function: ease-in;
     animation-fill-mode: both;
   }
@@ -370,12 +370,12 @@ nav {
     width: 100%;
   }
   .video-stripe {
-    height: 10vh;
-    width:  100%;
-    position:  absolute;
     background-color: black;
-    top: 43%;
+    height: 30%;
     left: 0;
+    position:  absolute;
+    top: 43%;
+    width:  100%;
     z-index: -1;
   }
   .black {
