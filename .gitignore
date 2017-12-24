@@ -1,11 +1,12 @@
 # Logs
-logs
 *.log
 npm-debug.log*
 
 # Minified JS & CSS
 /public/js/main.min.js
 /public/css/rombu.css
+/public/css/login.css
+/public/css/admin.css
 
 # Runtime data
 pids

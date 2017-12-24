@@ -1,16 +1,28 @@
 let User = require('../models/User');
 
 let user_api = {
-  loginUser: function(req, res) {
-    res.json("/");
-  },
+  // loginUser: function(req, res) {
+  //
+  // },
   renderLogin: function(req, res) {
-    let login = { title: 'Login Page' }
+    let login = {
+      title: 'Login Page',
+      cssLink: '<link rel="stylesheet" type="text/css" href="/css/login.css">',
+      layout: 'admin'
+    }
     res.render('user/login', login);
   },
   signOutUser: function(req, res) {
     req.logout();
     res.redirect("/");
+  },
+  renderCMS: function(req, res) {
+    let cms = {
+    title: 'Rombu Content Management System',
+    cssLink: '<link rel="stylesheet" type="text/css" href="/css/admin.css">',
+    layout: 'admin'
+  }
+    res.render('user/cms', cms)
   },
   signUpUser: function(req, res) {
     User.findOne({ 'email' :  req.body.email }, function(err, user) {
