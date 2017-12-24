@@ -15,6 +15,8 @@ var gulp      = require('gulp'),
 var path = {
   js: './public/js/main.js',
   jsOutput: './public/js',
+  sassLogin: './public/scss/login.scss',
+  sassAdmin: './public/scss/admin.scss',
   sass: './public/scss/rombu.scss',
   sassOutput: './public/css',
   views: './views/*.handlebars'
@@ -48,22 +50,48 @@ gulp.task('sass', function () {
   .pipe(livereload());
 });
 
+gulp.task('loginSass', function() {
+  return gulp.src(path.sassLogin)
+    .pipe(sass().on('error', sass.logError))
+    .pipe(rename("login.css"))
+    .pipe(cleanCSS({debug: true}, function(details) {
+      console.log(details.name + ': ' + details.stats.originalSize);
+      console.log(details.name + ': ' + details.stats.minifiedSize);
+    }))
+    .pipe(gulp.dest(path.sassOutput))
+    .pipe(livereload());
+});
+
+gulp.task('adminSass', function() {
+  return gulp.src('./public/scss/admin.scss')
+  .pipe(sass().on('error', sass.logError))
+  .pipe(rename("admin.css"))
+  .pipe(cleanCSS({debug: true}, function(details) {
+    console.log(details.name + ': ' + details.stats.originalSize);
+    console.log(details.name + ': ' + details.stats.minifiedSize);
+  }))
+  .pipe(gulp.dest(path.sassOutput))
+  .pipe(livereload());
+})
+
 /**************************************/
 //*****// Watch Task
 /**************************************/
 
 gulp.task('watch', function(){
   livereload.listen();
-  gulp.watch(path.views);
   gulp.watch(path.js, ['scripts']);
   gulp.watch(path.sass, ['sass']);
+  gulp.watch(path.sassLogin, ['loginSass']);
 });
 
 /**************************************/
 //*****// Default Task
 /**************************************/
 
-gulp.task('default', ['scripts', 'sass', 'watch'], function() {
+gulp.task('default', ['scripts', 'sass', 'loginSass', 'adminSass', 'watch'], function() {
   gulp.watch(path.js, ['scripts']);
   gulp.watch(path.sass, ['sass']);
+  gulp.watch(path.sassLogin, ['loginSass']);
+  gulp.watch(path.sassAdmin, ['adminSass']);
 });

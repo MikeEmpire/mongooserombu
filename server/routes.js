@@ -3,6 +3,6 @@ module.exports = function(app) {
   var user        = require('./routes/user');
 
   app.use('/', application);
-  app.use('/user', user)
+  app.use('/admin', user)
 
 }
